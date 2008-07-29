@@ -1,0 +1,27 @@
+http://www.facebook.com/album.php?&aid=7373&id=707610112
+
+POST /album.php?&aid=7373&id=707610112 HTTP/1.1
+Host: www.facebook.com
+User-Agent: Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.2) Gecko/20070219 Firefox/2.0.0.2
+Accept: text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5
+Accept-Language: en-gb,en;q=0.5
+Accept-Encoding: gzip,deflate
+Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7
+Keep-Alive: 300
+Connection: keep-alive
+Referer: http://www.facebook.com/album.php?&aid=7373&id=707610112
+Cookie: login=palfrey%40tevp.net; test_cookie=1; xs=698f1d3e23b88ee3577a2916c79df5c7; c_user=707610112
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 169
+pid_143961_707610112=1&pid_143962_707610112=1&pid_143963_707610112=1&pid_143964_707610112=1&post_form_id=80ec87b7e111182fd459fb084adcde3f&approve=Approve+Selected+Photos
+HTTP/1.x 200 OK
+Date: Sat, 10 Mar 2007 02:24:26 GMT
+Server: Apache/1.3.37
+Expires: Mon, 26 Jul 1997 05:00:00 GMT
+Cache-Control: private, no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+Pragma: no-cache
+Keep-Alive: timeout=3, max=989
+Connection: Keep-Alive
+Transfer-Encoding: chunked
+Content-Type: text/html; charset=utf-8
+Content-Encoding: gzip
