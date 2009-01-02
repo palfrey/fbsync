@@ -45,37 +45,6 @@ if len(argv)==1:
 trueroot = abspath(argv[1])+sep
 print "trueroot",trueroot
 
-def clear_pending():
-	cache = GetURL(debug=False)
-	cache.user_agent = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.2) Gecko/20070208 Iceweasel/2.0.0.2"
-
-	data = cache.get("http://www.facebook.com/",max_age=100)
-	challenge = search("<input type=\"hidden\" name=\"challenge\" value=\"([0-9a-f]+)\"", data.read()).groups()[0]
-	#cookies = data.info().cookiesline()
-
-	cookies ="test_cookie=1"
-
-	login = cache.get("https://login.facebook.com/login.php",ref="http://www.facebook.com/",headers={"Cookie":cookies},data={"challenge":challenge,"md5pass":"","noerror":"1","email":"palfrey@tevp.net","pass":"epsilon"},ignore_move=True,max_age=2)
-
-	reqs = cache.get("http://www.facebook.com/reqs.php",ref="http://www.facebook.com",headers={"Cookie":login.info().cookiesline()},max_age=2).read()
-
-	pending = findall("<a href=\"(http://www.facebook.com/album.php\?aid=\d+&id=\d+)\"><form><input type=\"button\" class=\"inputbutton\" id=\"\" name=\"\" value=\"View Pending Photos\"",reqs)
-	for p in pending:
-		ppage = cache.get(p,headers={"Cookie":login.info().cookiesline()},max_age=2).read()
-		values = dict(findall("<input.*?name=\"([^\"]+)\".*?value=\"([^\"]+)\"",ppage))
-		#print "values",values
-		data = {}
-		for v in values.keys():
-			if v in ["post_form_id","approve"] or v[:len("pid_")] == "pid_":
-				data[v] = values[v]
-		print "data",data
-		print "p",p
-		out = cache.get(p,ref=p,data=data,headers={"Cookie":login.info().cookiesline()},max_age=2).read()
-		file("out","w").write(out)
-	#raise Exception
-	
-clear_pending()
-#raise Exception
 
 def regenfolders():
 	global folders
@@ -180,9 +149,6 @@ for root, dirs, files in walk(trueroot):
 				else:
 					raise
 				
-	if added>0:
-		clear_pending()
 	done.append(truefolder)
 	dump(done,file("done","wb"))
-		#raise Exception
 			
