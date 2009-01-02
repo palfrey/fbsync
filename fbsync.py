@@ -9,7 +9,7 @@ from sys import argv,exit
 try:
 	from urlgrab.GetURL import GetURL
 except ImportError:
-	print "You need to install urlgrab. Get it using 'darcs get http://tevp.net/projects/urlgrab'"
+	print "You need to install urlgrab. Get it using 'git clone git://github.com/palfrey/urlgrab.git urlgrab'"
 	exit(1)
 
 from re import search,findall
