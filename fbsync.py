@@ -79,15 +79,11 @@ for root, dirs, files in walk(trueroot):
 	folder = root[len(trueroot):].replace(sep," - ")
 	truefolder = folder
 	findex = 1
-	if folder.find("200")!=0:
-		continue
 	if folder in done:
 		continue
-	#if folder!="2004 - 1127-30 dallas":
-	#	continue
 	existing = None	
 	added = 0
-	for x in files:
+	for x in sorted(files):
 		if x.lower().find(".jpg")!=-1:
 			createfolder(folder)
 			if existing == None:
@@ -140,7 +136,6 @@ for root, dirs, files in walk(trueroot):
 			data = file(fullpath,"r").read()
 			try:
 				facebook.photos_upload(data,caption=x,aid=folders[folder]['aid'])
-				sleep(1)
 			except FacebookError,e:
 				if e.code() == 321: #album full
 					findex +=1
